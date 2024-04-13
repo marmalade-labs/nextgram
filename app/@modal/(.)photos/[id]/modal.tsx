@@ -2,7 +2,8 @@
 
 import { type ElementRef, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { createPortal } from 'react-dom';
+import { createPortal, useFormStatus } from 'react-dom';
+import revalidate from '../../../actions';
 
 export function Modal({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -23,8 +24,16 @@ export function Modal({ children }: { children: React.ReactNode }) {
       <dialog ref={dialogRef} className="modal" onClose={onDismiss}>
         {children}
         <button onClick={onDismiss} className="close-button" />
+        <form action={revalidate}>
+          <SubmitButton />
+        </form>
       </dialog>
     </div>,
     document.getElementById('modal-root')!
   );
+}
+
+function SubmitButton() {
+  const { pending } = useFormStatus()
+  return <button type="submit" disabled={pending}>Submit</button>
 }
