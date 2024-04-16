@@ -20,7 +20,7 @@ export function ToggleAndNavigateButton({ id, isToggled: isToggledInitial }: { i
         await togglePhoto(id);
 
       }}>
-        <button type="submit">Toggle (Modal Won't Open)</button>
+        <button type="submit">Toggle (Modal Opens After Delay)</button>
       </form>
       <form action={async () => {
         const promise = togglePhoto(id);
@@ -29,7 +29,7 @@ export function ToggleAndNavigateButton({ id, isToggled: isToggledInitial }: { i
         await promise;
 
       }}>
-        <button type="submit">Toggle (Modal Opens After Delay)</button>
+        <button type="submit">Toggle (Delay + Empty Home Page)</button>
       </form>
     </>
   )
