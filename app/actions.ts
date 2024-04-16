@@ -5,7 +5,7 @@ import { revalidateTag } from "next/cache";
 
 export async function togglePhoto(id: string) {
   console.log("Toggle", id);
-  await new Promise(r => setTimeout(r, 5000));
+  await new Promise(r => setTimeout(r, 2000));
   try {
     await kv.json.toggle(`photo:${id}`, '$.isToggled')
   } catch {
