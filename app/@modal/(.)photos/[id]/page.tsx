@@ -1,9 +1,12 @@
+import { Photo } from '../../../components/Photo';
 import { Modal } from './modal';
 
-export default function PhotoModal({
-  params: { id: photoId },
+export default async function PhotoModal({
+  params: { id },
 }: {
   params: { id: string };
 }) {
-  return <Modal>{photoId}</Modal>;
+  return <Modal>
+    <Photo id={id} />
+  </Modal>;
 }
